@@ -8,7 +8,7 @@ public class JavaClass {
         // KotlinTopLevel.topLevelFunction()
         // KotlinClass.staticFunction();
         // KotlinPerson person = new KotlinPerson("Marcin");
-
-        Comparators.getUser();
     }
+
+
 }
