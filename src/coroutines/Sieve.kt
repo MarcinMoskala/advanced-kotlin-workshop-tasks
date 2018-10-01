@@ -1,8 +1,6 @@
 package coroutines
 
-import functional.quickSort
 import org.junit.jupiter.api.Test
-import java.util.*
 import kotlin.test.assertEquals
 
 val primes = buildSequence<Int> {
@@ -54,6 +52,4 @@ class SieveTests {
     fun `Prime at 200th position is 1223`() {
         assertEquals(1223, primes.take(200).last())
     }
-
-
 }

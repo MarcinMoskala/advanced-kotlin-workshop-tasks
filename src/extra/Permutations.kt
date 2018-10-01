@@ -11,10 +11,10 @@ import kotlin.test.assertEquals
  */
 
 /* This function returns number of all permutations of elements from set. It is equal to n! where n is size of set. */
-fun <T> Set<T>.permutationsNumber(): Long = size.factorial()
+fun <T> Set<T>.permutationsNumber(): Long = factorial(size)
 
 /* This function returns number of all permutations of elements from list. It is equal to n! / (n1! * n2! * ...) where n1, n2... are numbers elements that are the same. */
-fun <T> List<T>.permutationsNumber(): Long = if (size < 1) 1L else size.factorial() / groupBy { it }.map { it.value.size.factorial() }.product()
+fun <T> List<T>.permutationsNumber(): Long = if (size < 1) 1L else factorial(size) / groupBy { it }.map { factorial(it.value.size) }.product()
 
 /* This function returns all permutations of elements from set. These are different ways to arrange elements from this list.  */
 fun <T> Set<T>.permutations(): Set<List<T>> = TODO()

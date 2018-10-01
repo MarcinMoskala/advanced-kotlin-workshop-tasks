@@ -1,5 +1,5 @@
 package java
 
-fun topLevelFunction() {
-    print("This is topLevelFunction")
+fun topLevelFunction(arg: String) {
+    print("This is topLevelFunction with arg $arg")
 }

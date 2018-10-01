@@ -3,7 +3,13 @@ package collections
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-fun List<Student>.makePassingStudentsListText(): String = ""
+fun List<Student>.makePassingStudentsListText(): String = this
+        .filter { it.pointsInSemester > 15 && it.result >= 50 }
+        .sortedWith(compareBy({ it.surname }, { it.name }))
+        .joinToString(separator = "\n") {
+            "${it.name} ${it.surname}, ${it.result}"
+        }
+
 
 @Suppress("FunctionName")
 class PassingStudentsListTest : StudentsTests() {

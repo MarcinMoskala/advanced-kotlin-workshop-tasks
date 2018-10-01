@@ -1,3 +1,5 @@
+package basics;
+
 import java.awt.*;
 
 import static java.awt.Color.*;

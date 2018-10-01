@@ -1,4 +1,4 @@
-package extra
+package basics
 
 // TODO: Clean it up
 abstract class Tree {

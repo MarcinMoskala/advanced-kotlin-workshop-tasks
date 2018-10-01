@@ -3,10 +3,10 @@ package collections
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-fun List<Student>.makeBestStudentsList(): String = ""
+fun List<Student>.makeBestStudentsList(): String = TODO()
 
 @Suppress("FunctionName")
-class BestStudentsListTest: StudentsTests() {
+class BestStudentsListTest : StudentsTests() {
 
     @Test
     fun `Single student that matches criteria gets biggest internship`() {
