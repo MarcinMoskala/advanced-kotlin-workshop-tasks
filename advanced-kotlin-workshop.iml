@@ -20,6 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="kotlinx-coroutines-core-0.27.0" level="project" />
+    <orderEntry type="library" name="org.jetbrains.kotlinx:kotlinx-coroutines-core:0.30.0" level="project" />
   </component>
 </module>
