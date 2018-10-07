@@ -1,5 +1,3 @@
-@file:Suppress("ObsoleteExperimentalCoroutines", "DEPRECATION")
-
 package coroutines.backend
 
 import kotlinx.coroutines.experimental.runBlocking

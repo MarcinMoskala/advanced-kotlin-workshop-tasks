@@ -1,15 +1,11 @@
-// TODO: Remove it
-@file:Suppress("DEPRECATION", "ObsoleteExperimentalCoroutines")
-
 package coroutines
 
 import kotlinx.coroutines.experimental.*
 
-fun main(args: Array<String>) = runBlocking {
+fun main(args: Array<String>): Unit = runBlocking {
     println("Started!")
     test()
     println("Done.")
-    async {  }
 }
 
 suspend fun test() {
