@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="kotlinx-coroutines-core-0.30.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-0.30.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-common-0.30.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-core-common-0.30.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
