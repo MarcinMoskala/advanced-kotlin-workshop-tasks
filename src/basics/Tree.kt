@@ -21,7 +21,3 @@ private fun treeToString(tree: Tree, sb: StringBuilder): StringBuilder {
     }
     return sb
 }
-
-// Extra TODO
-// size, count, contains (with deep search)
-// Make a sorted tree with plus operator and balancing and treeOf
