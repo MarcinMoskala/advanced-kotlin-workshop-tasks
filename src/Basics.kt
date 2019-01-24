@@ -33,7 +33,7 @@ internal class BasicsTests {
     @Test
     fun `gcd for simple examples`() {
         assertEquals(4, gcd(12, 8))
-        assertEquals(3, gcd(12, 6))
+        assertEquals(6, gcd(12, 6))
         assertEquals(14, gcd(42, 56))
         assertEquals(18, gcd(461952, 116298))
         assertEquals(32, gcd(7966496, 314080416))
