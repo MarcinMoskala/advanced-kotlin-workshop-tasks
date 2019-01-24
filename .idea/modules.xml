@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Workshop.iml" filepath="$PROJECT_DIR$/.idea/modules/Workshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Workshop_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Workshop_main.iml" group="Workshop" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Workshop_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Workshop_test.iml" group="Workshop" />
       <module fileurl="file://$PROJECT_DIR$/advanced-kotlin-workshop.iml" filepath="$PROJECT_DIR$/advanced-kotlin-workshop.iml" />
     </modules>
   </component>

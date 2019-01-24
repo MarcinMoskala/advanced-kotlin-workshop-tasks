@@ -8,16 +8,6 @@ fun gcd(a: Int, b: Int): Int = TODO()
 // https://en.wikipedia.org/wiki/Fibonacci_number
 fun fib(n: Int): Int = TODO()
 
-fun main(args: Array<String>) {
-    println("Hello, world")
-
-    // TODO: I want User which can be used as follows:
-    // val user = User(0, "marcinmoskala@gmail.com")
-    // print(user.id) // 0
-    // print(user.email) // marcinmoskala@gmail.com
-    // print(user) // User with id $id and email $email
-}
-
 @Suppress("FunctionName")
 internal class BasicsTests {
 
