@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
 
     fun sayIfCanBuyAlcohol(person: Person) {
         val modal = if(person.canBuyAlcohol) "can" else "can't"
-        println("${businessman.name} $modal buy alcohol")
+        println("${person.name} $modal buy alcohol")
     }
 
     sayIfCanBuyAlcohol(businessman)

@@ -7,7 +7,7 @@ import kotlin.system.measureTimeMillis
 fun <T> mutableLazy(initializer: () -> T): ReadWriteProperty<Any?, T> = TODO()
 
 @Suppress("FunctionName")
-class SieveTests {
+class MutableLazyTests {
 
     @Test
     fun `I don't have to wait if I changed value first`() {

@@ -3,13 +3,7 @@ package collections
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-fun List<Student>.makePassingStudentsListText(): String = this
-        .filter { it.pointsInSemester > 15 && it.result >= 50 }
-        .sortedWith(compareBy({ it.surname }, { it.name }))
-        .joinToString(separator = "\n") {
-            "${it.name} ${it.surname}, ${it.result}"
-        }
-
+fun List<Student>.makePassingStudentsListText(): String = TODO()
 
 @Suppress("FunctionName")
 class PassingStudentsListTest : StudentsTests() {
@@ -39,6 +33,28 @@ class PassingStudentsListTest : StudentsTests() {
         val student = Student("Noely", "Peterson", 50.0, 25)
         val text = listOf(student).makePassingStudentsListText()
         assertEquals("Noely Peterson, 50.0", text)
+    }
+
+    @Test
+    fun `Students are displayed in an alphanumerical order sorted by surname and then by name`() {
+        val students = listOf(
+            Student(name = "B", surname = "A", result = 81.0, pointsInSemester = 16),
+            Student(name = "B", surname = "B", result = 82.0, pointsInSemester = 16),
+            Student(name = "A", surname = "A", result = 83.0, pointsInSemester = 16),
+            Student(name = "A", surname = "B", result = 84.0, pointsInSemester = 16)
+        )
+
+        // When
+        val text = students.makePassingStudentsListText()
+
+        // Then
+        val expected = """
+            A A, 83.0
+            B A, 81.0
+            A B, 84.0
+            B B, 82.0
+        """.trimIndent()
+        assertEquals(expected, text)
     }
 
     @Test
