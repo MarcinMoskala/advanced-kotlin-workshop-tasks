@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 // https://en.wikipedia.org/wiki/Greatest_common_divisor
 fun gcd(a: Int, b: Int): Int = TODO()
@@ -18,7 +19,7 @@ interface Console {
     fun println(text: String)
 }
 
-object PrintingConsole: Console {
+object PrintingConsole : Console {
     override fun println(text: String) {
         kotlin.io.println(text)
     }
@@ -68,21 +69,28 @@ internal class BasicsTests {
     }
 
     @Test
+    fun `FizzBuzz prints 100 elements`() {
+        val list = fuzzBuzzPrinted()
+        assertEquals(100, list.size)
+    }
+
+    @Test
     fun `FizzBuzz starts from 1 and 2`() {
-        val text = fuzzBuzzPrinted()
-        assertEquals("1", text[0])
-        assertEquals("2", text[1])
+        val (first, second) = fuzzBuzzPrinted()
+        assertEquals("1", first)
+        assertEquals("2", second)
     }
 
     @Test
     fun `Third FizzBuzz element is Fizz`() {
-        assertEquals("Fizz", fuzzBuzzPrinted()[2])
+        val (_, _, third) = fuzzBuzzPrinted()
+        assertEquals("Fizz", third)
     }
 
     @Test
     fun `Fifth FizzBuzz element is Buzz`() {
-        val text = fuzzBuzzPrinted()
-        assertEquals("Buzz", text[4])
+        val (_, _, _, _, fifth) = fuzzBuzzPrinted()
+        assertEquals("Buzz", fifth)
     }
 
     @Test
@@ -92,9 +100,37 @@ internal class BasicsTests {
     }
 
     @Test
+    fun `Every third element returns Fizz`() {
+        val text = fuzzBuzzPrinted()
+        for (i in (1..100).filter { it % 3 == 0 }) {
+            val position = i - 1
+            assertTrue("Fizz" in text[position])
+        }
+    }
+
+    @Test
+    fun `Every fifth element returns Fizz`() {
+        val text = fuzzBuzzPrinted()
+        for (i in (1..100).filter { it % 5 == 0 }) {
+            val position = i - 1
+            assertTrue("Buzz" in text[position])
+        }
+    }
+
+    @Test
+    fun `Every fifteenth element returns FizzBuzz`() {
+        val text = fuzzBuzzPrinted()
+        for (i in (1..100).filter { it % 15 == 0 }) {
+            val position = i - 1
+            assertEquals("FizzBuzz", text[position])
+        }
+    }
+
+    @Test
     fun fizzBuzzTest() {
         val text = fuzzBuzzPrinted()
-        val solution = "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\nFizz\n22\n23\nFizz\nBuzz\n26\nFizz\n28\n29\nFizzBuzz\n31\n32\nFizz\n34\nBuzz\nFizz\n37\n38\nFizz\nBuzz\n41\nFizz\n43\n44\nFizzBuzz\n46\n47\nFizz\n49\nBuzz\nFizz\n52\n53\nFizz\nBuzz\n56\nFizz\n58\n59\nFizzBuzz\n61\n62\nFizz\n64\nBuzz\nFizz\n67\n68\nFizz\nBuzz\n71\nFizz\n73\n74\nFizzBuzz\n76\n77\nFizz\n79\nBuzz\nFizz\n82\n83\nFizz\nBuzz\n86\nFizz\n88\n89\nFizzBuzz\n91\n92\nFizz\n94\nBuzz\nFizz\n97\n98\nFizz\nBuzz"
+        val solution =
+            "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\nFizz\n22\n23\nFizz\nBuzz\n26\nFizz\n28\n29\nFizzBuzz\n31\n32\nFizz\n34\nBuzz\nFizz\n37\n38\nFizz\nBuzz\n41\nFizz\n43\n44\nFizzBuzz\n46\n47\nFizz\n49\nBuzz\nFizz\n52\n53\nFizz\nBuzz\n56\nFizz\n58\n59\nFizzBuzz\n61\n62\nFizz\n64\nBuzz\nFizz\n67\n68\nFizz\nBuzz\n71\nFizz\n73\n74\nFizzBuzz\n76\n77\nFizz\n79\nBuzz\nFizz\n82\n83\nFizz\nBuzz\n86\nFizz\n88\n89\nFizzBuzz\n91\n92\nFizz\n94\nBuzz\nFizz\n97\n98\nFizz\nBuzz"
         assertEquals(solution, text.map { it.trim() }.joinToString(separator = "\n"))
     }
 
@@ -128,7 +164,7 @@ internal class BasicsTests {
         private val somePrimes = listOf(2, 3, 5, 7, 11, 13, 17, 19)
 
         private val twoDifferentPrimesPermutations = somePrimes
-                .flatMap { p1 -> somePrimes.map { p2 -> p1 to p2 } }
-                .filter { (p1, p2) -> p1 != p2 }
+            .flatMap { p1 -> somePrimes.map { p2 -> p1 to p2 } }
+            .filter { (p1, p2) -> p1 != p2 }
     }
 }
