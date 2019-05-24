@@ -102,8 +102,7 @@ internal class BasicsTests {
     @Test
     fun `Every third element returns Fizz`() {
         val text = fuzzBuzzPrinted()
-        for (i in (1..100).filter { it % 3 == 0 }) {
-            val position = i - 1
+        for (position in positionsForNumbersDividableBy(3)) {
             assertTrue("Fizz" in text[position])
         }
     }
@@ -111,8 +110,7 @@ internal class BasicsTests {
     @Test
     fun `Every fifth element returns Fizz`() {
         val text = fuzzBuzzPrinted()
-        for (i in (1..100).filter { it % 5 == 0 }) {
-            val position = i - 1
+        for (position in positionsForNumbersDividableBy(5)) {
             assertTrue("Buzz" in text[position])
         }
     }
@@ -120,18 +118,20 @@ internal class BasicsTests {
     @Test
     fun `Every fifteenth element returns FizzBuzz`() {
         val text = fuzzBuzzPrinted()
-        for (i in (1..100).filter { it % 15 == 0 }) {
-            val position = i - 1
+        for (position in positionsForNumbersDividableBy(15)) {
             assertEquals("FizzBuzz", text[position])
         }
     }
+
+    private fun positionsForNumbersDividableBy(num: Int) =
+        (1..100).filter { it % num == 0 }.map { it - 1 }
 
     @Test
     fun fizzBuzzTest() {
         val text = fuzzBuzzPrinted()
         val solution =
             "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\nFizz\n22\n23\nFizz\nBuzz\n26\nFizz\n28\n29\nFizzBuzz\n31\n32\nFizz\n34\nBuzz\nFizz\n37\n38\nFizz\nBuzz\n41\nFizz\n43\n44\nFizzBuzz\n46\n47\nFizz\n49\nBuzz\nFizz\n52\n53\nFizz\nBuzz\n56\nFizz\n58\n59\nFizzBuzz\n61\n62\nFizz\n64\nBuzz\nFizz\n67\n68\nFizz\nBuzz\n71\nFizz\n73\n74\nFizzBuzz\n76\n77\nFizz\n79\nBuzz\nFizz\n82\n83\nFizz\nBuzz\n86\nFizz\n88\n89\nFizzBuzz\n91\n92\nFizz\n94\nBuzz\nFizz\n97\n98\nFizz\nBuzz"
-        assertEquals(solution, text.map { it.trim() }.joinToString(separator = "\n"))
+        assertEquals(solution, text.joinToString(separator = "\n") { it.trim() })
     }
 
     private fun fuzzBuzzPrinted(): List<String> {

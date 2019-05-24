@@ -7,7 +7,15 @@ class ErrorResponse<R, E>(val error: E): Response<R, E>()
 /* TODO:
    I would like to use it this way:
 
-fun main(args: Array<String>) {
+fun processResponseInt(response: Response<Int, String>) { /*...*/ }
+fun processResponseString(response: Response<String, Throwable>) { /*...*/ }
+
+fun usage() {
+    processResponseInt(Success(1))
+    processResponseInt(ErrorResponse("ERROR"))
+    processResponseString(Success("ERROR"))
+    processResponseString(ErrorResponse(Error("ERROR")))
+
     val rs1 = Success(1)
     val re1 = ErrorResponse(Error())
     val re2 = ErrorResponse("Error")

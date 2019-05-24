@@ -1,4 +1,4 @@
-package basics
+package basics.tree
 
 // TODO: Clean it up
 abstract class Tree {
