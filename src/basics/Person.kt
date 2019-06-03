@@ -3,10 +3,7 @@ package basics
 interface Person {
     val name: String
     val age: Int
-
-    // Always true when age >= 21
     val canBuyAlcohol: Boolean
-        get() = age >= 21
 
     fun helloText(): String
 
