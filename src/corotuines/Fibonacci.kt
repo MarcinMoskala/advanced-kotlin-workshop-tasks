@@ -3,17 +3,8 @@ package coroutines
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-val fibonacci = sequence {
-    yield(1)
-    yield(1)
-    var m1 = 1
-    var m2 = 1
-    while (true) {
-        val next = m1 + m2
-        yield(m2 + m1)
-        m2 = m1
-        m1 = next
-    }
+val fibonacci: Sequence<Int> = sequence {
+    TODO()
 }
 
 @Suppress("FunctionName")

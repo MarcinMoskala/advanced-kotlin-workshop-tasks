@@ -3,13 +3,20 @@ package coroutines
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-val primes = sequence<Int> {
+val primes: Sequence<Int> = sequence {
+    TODO()
+}
+
+// TODO: Delete it and replace it with sequence builder (above)
+fun getPrimeNumbers(num: Int): List<Int> {
     var numbers = generateSequence(2) { it + 1 }
-    while (true) {
+    val primes = mutableListOf<Int>()
+    repeat(num) {
         val prime = numbers.first()
-        yield(prime)
+        primes += prime
         numbers = numbers.drop(1).filter { it % prime != 0 }
     }
+    return primes
 }
 
 @Suppress("FunctionName")
