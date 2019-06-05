@@ -16,9 +16,7 @@ fun <T> continuationSteal(console: Console = Console()): Continuation<T>? = runB
     var continuation: Continuation<T>? = null
     GlobalScope.launch(Dispatchers.Unconfined) {
         console.println("Before")
-        val test = suspendCoroutine<T> { cont ->
-            continuation = cont
-        }
+        TODO()
         console.println("After")
     }
     continuation
