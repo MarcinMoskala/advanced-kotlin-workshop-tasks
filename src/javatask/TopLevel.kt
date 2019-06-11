@@ -1,5 +1,5 @@
 package javatask
 
-fun topLevelFunction(arg: String) {
-    print("This is topLevelFunction with arg $arg")
+fun topLevelFunction() {
+    print("This is topLevelFunction")
 }
