@@ -22,7 +22,7 @@ class PlusAtTests {
     private fun <T> assertIsThrowingError(f: () -> T) {
         try {
             f()
-        } catch (r: Error) {
+        } catch (r: Throwable) {
             return
         }
         assert(false)
