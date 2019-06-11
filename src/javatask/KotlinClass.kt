@@ -1,4 +1,4 @@
-package java
+package javatask
 
 class KotlinClass {
     companion object {

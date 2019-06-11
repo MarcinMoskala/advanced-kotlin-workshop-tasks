@@ -1,4 +1,4 @@
-package java
+package javatask
 
 class KotlinPerson(
     var name: String = "",
