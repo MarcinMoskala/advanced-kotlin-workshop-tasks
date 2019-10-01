@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import okhttp3.OkHttpClient
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.http.GET
@@ -16,7 +18,6 @@ fun main(args: Array<String>) {
     val org = "kotlin"
     val req = RequestData(username, token, org)
     val service: GitHubService = createGitHubService(req.username, req.password)
-
 
 }
 
@@ -70,4 +71,16 @@ fun createGitHubService(username: String, password: String): GitHubService {
         .client(httpClient)
         .build()
     return retrofit.create(GitHubService::class.java)
+}
+
+inline fun <T> Call<T>.onResponse(crossinline callback: (Response<T>) -> Unit) {
+    enqueue(object : Callback<T> {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
+            callback(response)
+        }
+
+        override fun onFailure(call: Call<T>, t: Throwable) {
+            throw t
+        }
+    })
 }
