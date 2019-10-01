@@ -19,17 +19,27 @@ fun main(args: Array<String>) {
     val req = RequestData(username, token, org)
     val service: GitHubService = createGitHubService(req.username, req.password)
 
+    service.getOrgReposCall().onResponse {
+        println(it)
+    }
 }
 
-interface GitHubService {
-    @GET("orgs/{org}/repos?per_page=100")
-    fun getOrgReposCall(
-        @Path("org") org: String
-    ): Call<List<Repo>>
+fun GitHubService.getOrgRepos(callback: (List<Repo>)->Unit) =
+    this.getOrgReposCall().onResponse {
+        callback(it.body() ?: throw Error("No body in the response"))
+    }
 
-    @GET("repos/{owner}/{repo}/contributors?per_page=100")
+fun GitHubService.getRepoContributors(repo: String, callback: (List<User>)->Unit) =
+    this.getRepoContributorsCall(repo).onResponse {
+        callback(it.body() ?: throw Error("No body in the response"))
+    }
+
+interface GitHubService {
+    @GET("orgs/kotlin/repos?per_page=100")
+    fun getOrgReposCall(): Call<List<Repo>>
+
+    @GET("repos/kotlin/{repo}/contributors?per_page=100")
     fun getRepoContributorsCall(
-        @Path("owner") owner: String,
         @Path("repo") repo: String
     ): Call<List<User>>
 }
