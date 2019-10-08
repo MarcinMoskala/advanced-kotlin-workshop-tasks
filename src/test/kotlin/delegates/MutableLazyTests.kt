@@ -1,0 +1,61 @@
+@file:JvmName("Mutable")
+
+package delegates
+
+import collections.Student
+import org.junit.Assert
+import org.junit.Test
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+import kotlin.system.measureTimeMillis
+
+@Suppress("FunctionName")
+class MutableLazyTests {
+
+    @Test
+    fun `Do not initialize if initialized`() {
+        val time = measureTimeMillis {
+            var game: Game? by mutableLazy { readGameFromSave() }
+            game = Game()
+            print(game)
+        }
+        assert(time in 0..100)
+    }
+
+    @Test
+    fun `Initializes if not initialized`() {
+        val time = measureTimeMillis {
+            val game: Game? by mutableLazy { readGameFromSave() }
+            print(game)
+        }
+        assert(time in 450..550)
+    }
+
+    @Test
+    fun `Do not initialize again if already initialized`() {
+        val time = measureTimeMillis {
+            val game: Game? by mutableLazy { readGameFromSave() }
+            print(game)
+            print(game)
+            print(game)
+        }
+        assert(time in 450..550)
+    }
+
+    @Test
+    fun `MutableLazy should accept nullable values`() {
+        val lazy by mutableLazy<String?> { null }
+        Assert.assertNull(lazy)
+
+        var lazy2 by mutableLazy<String?> { "A" }
+        lazy2 = null
+        Assert.assertNull(lazy2)
+    }
+
+    private class Game()
+
+    private fun readGameFromSave(): Game? {
+        Thread.sleep(500)
+        return Game()
+    }
+}
