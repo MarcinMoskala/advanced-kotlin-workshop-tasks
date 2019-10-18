@@ -3,7 +3,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 @Suppress("FunctionName")
-internal class BasicsTests {
+internal class BasicsTest {
 
     @Test
     fun `gcd returnes x for x and x`() {

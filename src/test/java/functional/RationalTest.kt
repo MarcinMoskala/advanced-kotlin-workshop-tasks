@@ -3,7 +3,7 @@ package functional
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class RationalTests {
+class RationalTest {
     @Test
     fun testIntExtension() {
         assertEquals(RationalNumber(4, 1), 4.r())

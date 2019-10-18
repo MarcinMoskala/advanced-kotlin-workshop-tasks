@@ -10,7 +10,7 @@ import kotlin.reflect.KProperty
 import kotlin.system.measureTimeMillis
 
 @Suppress("FunctionName")
-class MutableLazyTests {
+class MutableLazyTest {
 
     @Test
     fun `Do not initialize if initialized`() {

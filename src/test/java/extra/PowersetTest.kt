@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 @Suppress("FunctionName")
-class PowersetTests {
+class PowersetTest {
 
     @Test
     fun `Powerset of empty list is only empty list`() {

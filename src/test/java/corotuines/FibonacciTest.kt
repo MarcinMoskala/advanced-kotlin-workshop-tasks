@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-internal class FibonacciTests {
+internal class FibonacciTest {
 
     @Test
     fun `First two numbers should be 1 and 1`() {

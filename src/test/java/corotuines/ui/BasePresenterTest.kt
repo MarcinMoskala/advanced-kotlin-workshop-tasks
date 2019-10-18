@@ -7,7 +7,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-class BasePresenterTests {
+class BasePresenterTest {
 
     class FakePresenter(
             private val jobInterceptor: (() -> Unit)? = null,
@@ -17,24 +17,24 @@ class BasePresenterTests {
         var cancelledJobs = 0
 
         fun onCreate() {
-            launch {
-                try {
-                    delay(100)
-                    jobInterceptor?.invoke()
-                    delay(2000)
-                } finally {
-                    cancelledJobs += 1
-                }
-            }
-            launch {
-                try {
-                    delay(100)
-                    jobInterceptor?.invoke()
-                    delay(2000)
-                } finally {
-                    cancelledJobs += 1
-                }
-            }
+//            launch {
+//                try {
+//                    delay(100)
+//                    jobInterceptor?.invoke()
+//                    delay(2000)
+//                } finally {
+//                    cancelledJobs += 1
+//                }
+//            }
+//            launch {
+//                try {
+//                    delay(100)
+//                    jobInterceptor?.invoke()
+//                    delay(2000)
+//                } finally {
+//                    cancelledJobs += 1
+//                }
+//            }
         }
     }
 

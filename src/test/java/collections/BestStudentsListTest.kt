@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 @Suppress("FunctionName")
-class BestStudentsListTest : StudentsTests() {
+class BestStudentsListTest {
 
     @Test
     fun `Single student that matches criteria gets biggest internship`() {

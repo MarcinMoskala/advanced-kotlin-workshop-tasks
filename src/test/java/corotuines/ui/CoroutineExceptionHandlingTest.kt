@@ -9,21 +9,21 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 @Suppress("FunctionName")
-class CoroutineExceptionHandlingTests {
+class CoroutineExceptionHandlingTest {
 
     class FakePresenterForSingleExceptionHandling(val onSecondAction: ()->Unit) : BasePresenter() {
 
         var cancelledJobs = 0
 
         fun onCreate() {
-            launch {
-                delay(100)
-                throw Error()
-            }
-            launch {
-                delay(200)
-                onSecondAction()
-            }
+//            launch {
+//                delay(100)
+//                throw Error()
+//            }
+//            launch {
+//                delay(200)
+//                onSecondAction()
+//            }
         }
     }
 

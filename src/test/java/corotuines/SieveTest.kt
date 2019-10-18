@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-class SieveTests {
+class SieveTest {
 
     @Test
     fun `First prime number is 2`() {

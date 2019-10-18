@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-class PlusAtTests {
+class PlusAtTest {
 
     @Test
     fun `Simple plusAt tests`() {

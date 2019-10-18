@@ -4,7 +4,7 @@ import assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class APITests {
+class APITest {
 
     @Test
     fun `When asked for a user, correct user is returned`() {

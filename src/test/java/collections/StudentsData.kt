@@ -1,6 +1,5 @@
 package collections
 
-abstract class StudentsData() {
     val internshipStudent = Student("Marc", "Smith", 87.0, 32)
     val studentWithTooLowResultToInternship = Student("Marcus", "Smith", 37.0, 32)
     val studentWithNotEnoughPointsForInternship = Student("Marcello", "Smith", 87.0, 12)
@@ -30,4 +29,3 @@ abstract class StudentsData() {
             Student("James", "Johnson", 85.2, 31),
             Student("Jack", "Johnson", 85.3, 31)
     )
-}

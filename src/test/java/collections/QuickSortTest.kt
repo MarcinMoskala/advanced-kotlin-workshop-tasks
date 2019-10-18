@@ -5,7 +5,7 @@ import java.util.*
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-class QuickSortTests {
+class QuickSortTest {
 
     @Test
     fun `Empty list is sorted`() {

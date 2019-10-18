@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-internal class PermutationTests {
+internal class PermutationTest {
 
     @Test
     fun `Test permutation numbers for Sets with different sizes`() {

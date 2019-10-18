@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 @Suppress("FunctionName")
-class ContinuationStealTests {
+class ContinuationStealTest {
 
     private val fakeText = "This is some text"
 

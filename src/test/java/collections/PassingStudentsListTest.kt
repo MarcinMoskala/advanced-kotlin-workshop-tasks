@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 @Suppress("FunctionName")
-class PassingStudentsListTest : StudentsTests() {
+class PassingStudentsListTest {
 
     @Test
     fun `Single student that matches criteria is displayed`() {

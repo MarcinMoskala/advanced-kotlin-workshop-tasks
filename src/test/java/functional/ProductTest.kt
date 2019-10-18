@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-internal class ProductTests {
+internal class ProductTest {
 
     @Test
     fun `Product of empty IntRange is 1`() {
