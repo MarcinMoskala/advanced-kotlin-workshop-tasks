@@ -1,7 +1,7 @@
 package coroutines.ui
 
 import kotlinx.coroutines.*
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.test.assertEquals

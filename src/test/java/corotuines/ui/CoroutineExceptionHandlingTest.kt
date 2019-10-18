@@ -4,7 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.supervisorScope
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 

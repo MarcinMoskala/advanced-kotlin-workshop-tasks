@@ -1,10 +1,9 @@
 package basics
 
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import kotlin.test.assertEquals
 
-@Suppress("FunctionName")
-internal class FactorialTest {
+class FactorialTest {
 
     @Test
     fun `Test factorial results`() {

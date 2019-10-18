@@ -1,6 +1,6 @@
 package collections
 
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import java.util.*
 import kotlin.test.assertEquals
 
