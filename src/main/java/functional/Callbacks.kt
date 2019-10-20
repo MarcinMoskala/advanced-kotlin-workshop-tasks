@@ -13,31 +13,68 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import java.util.*
 
-fun main(args: Array<String>) {
+fun main() {
     val username = "<Your Github username>"
     val token = "<Github token>"
-    val org = "jetbrains"
-    val req = RequestData(username, token, org)
-    val service: GitHubService = createGitHubService(req.username, req.password)
+    val service: GitHubService = createGitHubService(username, token)
 
+    getAggregatedContributions(service) { users ->
+        val sortedUsers = users.sortedByDescending { it.contributions }
+        println("Aggregated contributions:")
+        for ((index, user) in sortedUsers.withIndex()) {
+            println("$index: ${user.login} with ${user.contributions} contributions")
+        }
+    }
+}
+
+fun getAggregatedContributions(service: GitHubService, callback: (List<User>) -> Unit) {
     TODO()
 }
 
-fun GitHubService.getOrgRepos(callback: (List<Repo>) -> Unit) =
-    this.getOrgReposCall().onResponse {
-        callback(it.body() ?: throw ApiError(it.code(), it.message()))
-    }
-
-fun GitHubService.getRepoContributors(repo: String, callback: (List<User>) -> Unit) =
-    this.getRepoContributorsCall(repo).onResponse {
-        callback(it.body() ?: throw ApiError(it.code(), it.message()))
-    }
-
 interface GitHubService {
-    @GET("orgs/kotlin/repos?per_page=100")
+    fun getOrgRepos(callback: (List<Repo>) -> Unit)
+    fun getRepoContributors(repo: String, callback: (List<User>) -> Unit)
+}
+
+fun createGitHubService(username: String, password: String): GitHubService {
+    val authToken = "Basic " + Base64.getEncoder().encode("$username:$password".toByteArray()).toString(Charsets.UTF_8)
+    val httpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val original = chain.request()
+            val builder = original.newBuilder()
+                .header("Accept", "application/vnd.github.v3+json")
+                .header("Authorization", authToken)
+            val request = builder.build()
+            chain.proceed(request)
+        }
+        .build()
+
+    return Retrofit.Builder()
+        .baseUrl("https://api.github.com")
+        .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+        .client(httpClient)
+        .build()
+        .create(GitHubServiceApiDef::class.java)
+        .let(::GitHubServiceImpl)
+}
+
+class GitHubServiceImpl(val apiService: GitHubServiceApiDef) : GitHubService {
+    override fun getOrgRepos(callback: (List<Repo>) -> Unit) =
+        apiService.getOrgReposCall().onResponse {
+            callback(it.body() ?: throw ApiError(it.code(), it.message()))
+        }
+
+    override fun getRepoContributors(repo: String, callback: (List<User>) -> Unit) =
+        apiService.getRepoContributorsCall(repo).onResponse {
+            callback(it.body() ?: throw ApiError(it.code(), it.message()))
+        }
+}
+
+interface GitHubServiceApiDef {
+    @GET("orgs/jetbrains/repos?per_page=100")
     fun getOrgReposCall(): Call<List<Repo>>
 
-    @GET("repos/kotlin/{repo}/contributors?per_page=100")
+    @GET("repos/jetbrains/{repo}/contributors?per_page=100")
     fun getRepoContributorsCall(
         @Path("repo") repo: String
     ): Call<List<User>>
@@ -54,33 +91,6 @@ data class User(
     val login: String,
     val contributions: Int
 )
-
-data class RequestData(
-    val username: String,
-    val password: String,
-    val org: String
-)
-
-fun createGitHubService(username: String, password: String): GitHubService {
-    val authToken = "Basic " + Base64.getEncoder().encode("$username:$password".toByteArray()).toString(Charsets.UTF_8)
-    val httpClient = OkHttpClient.Builder()
-        .addInterceptor { chain ->
-            val original = chain.request()
-            val builder = original.newBuilder()
-                .header("Accept", "application/vnd.github.v3+json")
-                .header("Authorization", authToken)
-            val request = builder.build()
-            chain.proceed(request)
-        }
-        .build()
-
-    val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com")
-        .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-        .client(httpClient)
-        .build()
-    return retrofit.create(GitHubService::class.java)
-}
 
 inline fun <T> Call<T>.onResponse(crossinline callback: (Response<T>) -> Unit) {
     enqueue(object : Callback<T> {
