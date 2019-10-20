@@ -1,9 +1,9 @@
 package functional
 
-data class RationalNumber(val numerator: Int, val denominator: Int)
+data class Rational(val numerator: Int, val denominator: Int)
 
-fun Int.r(): RationalNumber = TODO()
-fun Pair<Int, Int>.r(): RationalNumber = TODO()
+fun Int.r(): Rational = TODO()
+fun Pair<Int, Int>.r(): Rational = TODO()
 
 fun main(args: Array<String>) {
     print(1.r())
