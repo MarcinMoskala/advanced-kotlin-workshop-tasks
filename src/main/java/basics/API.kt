@@ -1,5 +1,7 @@
 package basics
 
+import generics.Response
+
 class StudentController(
     val studentRepository: StudentRepository,
     val analyticsRepository: AnalyticsRepository
@@ -32,8 +34,11 @@ data class StudentEntity(
 interface StudentRepository {
 
     fun findStudent(id: Long): StudentEntity?
+    fun findStudentResult(id: Long): Response<StudentEntity, NotFoundException>
     fun getAllStudents(): List<StudentEntity>
 }
+
+object NotFoundException: Throwable()
 
 interface AnalyticsRepository {
 

@@ -1,6 +1,9 @@
 package basics
 
 import assertThrows
+import generics.Failure
+import generics.Response
+import generics.Success
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -74,6 +77,13 @@ class APITest {
 
         override fun findStudent(id: Long): StudentEntity? =
             students.firstOrNull { it.id == id }
+
+        override fun findStudentResult(id: Long): Response<StudentEntity, NotFoundException> {
+            return students.firstOrNull { it.id == id }
+                ?.let { Success<StudentEntity, NotFoundException>(it) }
+                ?: Failure(NotFoundException)
+        }
+
 
         override fun getAllStudents(): List<StudentEntity> =
             students
