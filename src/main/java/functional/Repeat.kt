@@ -1,7 +1,7 @@
 package functional
 
-private fun repeat(times: Int, action: () -> Unit) {
-    TODO()
+fun repeat(times: Int, action: () -> Unit) {
+
 }
 
 fun main(args: Array<String>) {

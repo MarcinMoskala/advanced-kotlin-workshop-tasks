@@ -2,6 +2,7 @@ package functional
 
 import org.junit.Assert
 import org.junit.Test
+import kotlin.repeat as `Do not use it`
 
 class RepeatTest {
 
