@@ -11,7 +11,7 @@ class FunctionsClassic {
     fun triple(num: Int): Int = num * 3
 
     fun longestOf(str1: String, str2: String, str3: String): String = listOf(str1, str2, str3)
-        .maxBy { it.length }!!
+        .maxByOrNull { it.length }!!
 }
 
 interface FunctionsFunctional {
@@ -64,7 +64,7 @@ class FunctionReferenceFunctionalTypeInferred : FunctionsFunctional {
     private fun triple(num: Int): Int = num * 3
 
     private fun longestOf(str1: String, str2: String, str3: String): String = listOf(str1, str2, str3)
-        .maxBy { it.length }!!
+        .maxByOrNull { it.length }!!
 }
 
 class BoundedFunctionReferenceFunctionalTypeInferred : FunctionsFunctional {
