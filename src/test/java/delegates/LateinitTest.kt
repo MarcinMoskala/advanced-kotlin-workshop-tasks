@@ -3,7 +3,12 @@
 package delegates
 
 import org.junit.Test
+import java.lang.IllegalArgumentException
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+
 
 @Suppress("FunctionName")
 class LateinitTest {
@@ -14,19 +19,19 @@ class LateinitTest {
 //        val res = runCatching {
 //            println(value)
 //        }
-//        assertEquals(
-//            IllegalStateException("Variable value must be set before it is initialized"),
-//            res.exceptionOrNull()
-//        )
+//        val exception = res.exceptionOrNull()
+//        assertNotNull(exception)
+//        assert(exception is IllegalStateException)
+//        assertEquals("Variable value must be set before it is initialized", exception.message)
 //
 //        var value2: Int by Lateinit()
 //        val res2 = runCatching {
-//            println(value)
+//            println(value2)
 //        }
-//        assertEquals(
-//            IllegalStateException("Variable value2 must be set before it is initialized"),
-//            res2.exceptionOrNull()
-//        )
+//        val exception2 = res2.exceptionOrNull()
+//        assertNotNull(exception2)
+//        assert(exception2 is IllegalStateException)
+//        assertEquals("Variable value2 must be set before it is initialized", exception2.message)
 //    }
 //
 //    @Test
