@@ -8,8 +8,8 @@ interface Mailer {
 }
 
 /*
-Rewrite Java method 'MessageUtil.sendMessageToClient' in Kotlin in 2-3 lines.
+Send message if the message, client, personal info and email are not null.
 */
 fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
-    TODO()
+
 }
