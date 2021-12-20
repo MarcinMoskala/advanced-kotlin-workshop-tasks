@@ -15,10 +15,10 @@ class APITest {
         val analyticsRepository = FakeAnalyticsRepository()
         val controller = StudentController(studentsRepo, analyticsRepository)
 
-        assertEquals(StudentAPI("Alec", "Strong"), controller.getUser(1))
-        assertEquals(StudentAPI("Jordan", "Peterson"), controller.getUser(2))
-        assertEquals(StudentAPI("Joe", "Regan"), controller.getUser(3))
-        assertEquals(StudentAPI("Adam", "Savage"), controller.getUser(4))
+        assertEquals(StudentAPI("Alec", "Strong"), controller.getStudent(1))
+        assertEquals(StudentAPI("Jordan", "Peterson"), controller.getStudent(2))
+        assertEquals(StudentAPI("Joe", "Regan"), controller.getStudent(3))
+        assertEquals(StudentAPI("Adam", "Savage"), controller.getStudent(4))
     }
 
     @Test
@@ -27,9 +27,9 @@ class APITest {
         val analyticsRepository = FakeAnalyticsRepository()
         val controller = StudentController(studentsRepo, analyticsRepository)
 
-        val err = assertThrows<ApiError>("No user with id 10") { controller.getUser(10) }
+        val err = assertThrows<ApiError>("No user with id 10") { controller.getStudent(10) }
         assertEquals("Error code should be 400", 400, err.code)
-        assertThrows<ApiError>("No user with id 0") { controller.getUser(0) }
+        assertThrows<ApiError>("No user with id 0") { controller.getStudent(0) }
     }
 
     @Test
@@ -39,14 +39,14 @@ class APITest {
         val controller = StudentController(studentsRepo, analyticsRepository)
 
         assertEquals(0, analyticsRepository.getStudentByIdCount(1))
-        controller.getUser(1)
+        controller.getStudent(1)
         assertEquals(1, analyticsRepository.getStudentByIdCount(1))
-        controller.getUser(1)
-        controller.getUser(1)
+        controller.getStudent(1)
+        controller.getStudent(1)
         assertEquals(3, analyticsRepository.getStudentByIdCount(1))
 
         assertEquals(0, analyticsRepository.getStudentByIdCount(4))
-        controller.getUser(4)
+        controller.getStudent(4)
         assertEquals(1, analyticsRepository.getStudentByIdCount(4))
         assertEquals(3, analyticsRepository.getStudentByIdCount(1))
     }
@@ -57,7 +57,7 @@ class APITest {
         val analyticsRepository = FakeAnalyticsRepository()
         val controller = StudentController(studentsRepo, analyticsRepository)
 
-        val ret = controller.getUsers()
+        val ret = controller.getStudents()
         val expected = listOf(
             StudentAPI("Jordan", "Peterson"),
             StudentAPI("Joe", "Regan"),

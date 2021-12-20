@@ -8,12 +8,12 @@ class StudentController(
 ) {
 
     @GetMapping("/student/{id}")
-    fun getUser(@PathVariable id: Long): StudentAPI {
+    fun getStudent(@PathVariable id: Long): StudentAPI {
         TODO()
     }
 
     @GetMapping("/student")
-    fun getUsers(): List<StudentAPI> {
+    fun getStudents(): List<StudentAPI> {
         TODO()
     }
 }
