@@ -14,7 +14,7 @@ inline fun <T> Iterable<T>.onEach(operation: (T) -> Unit): Iterable<T> {
 }
 
 inline fun <T, R> Iterable<T>.flatMap(transformation: (T) -> Iterable<R>): List<R> {
-    val list = arrayListOf<R>()
+    val list = ArrayList<R>()
     for (elem in this) {
         list.addAll(transformation(elem))
     }
@@ -22,7 +22,7 @@ inline fun <T, R> Iterable<T>.flatMap(transformation: (T) -> Iterable<R>): List<
 }
 
 inline fun <T> Iterable<T>.filter(predicate: (T) -> Boolean): List<T> {
-    val list = arrayListOf<T>()
+    val list = ArrayList<T>()
     for (elem in this) {
         if (predicate(elem)) {
             list.add(elem)
