@@ -19,7 +19,7 @@ class SendMessageTest {
     }
 
     @Test
-    fun `function with correct name and exist`() {
+    fun `function with correct name exist`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
     }
