@@ -25,14 +25,14 @@ class SendMessageTest {
     }
 
     @Test
-    fun `function has 3 parameters (+ receiver)`() {
+    fun `the function has 3 parameters (+ receiver)`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         assertEquals(4, function.parameters.size, "Function should have three parameters" )
     }
 
     @Test
-    fun `function parameters has correct types`() {
+    fun `the function parameters has correct types`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         assertEquals(typeOf<String>(), function.parameters[1].type)
@@ -41,14 +41,14 @@ class SendMessageTest {
     }
 
     @Test
-    fun `function has correct result type`() {
+    fun `the function has correct result type`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         assertEquals(typeOf<Unit>(), function.returnType)
     }
 
     @Test
-    fun `function parameters have correct names`() {
+    fun `the function parameters have correct names`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         assertEquals("to", function.parameters[1].name)
@@ -57,7 +57,7 @@ class SendMessageTest {
     }
 
     @Test
-    fun `all parameters have default arguments`() {
+    fun `all parameters of the function have default arguments`() {
         val function = MessageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         assert(function.parameters[1].isOptional)
@@ -66,7 +66,7 @@ class SendMessageTest {
     }
 
     @Test
-    fun `calling function with no arguments sends empty message to everyone`() {
+    fun `calling the function with no arguments sends empty message to everyone`() {
         val function = messageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         function.callBy(mapOf(function.parameters[0] to messageService))
@@ -79,7 +79,7 @@ class SendMessageTest {
     }
 
     @Test
-    fun `calling function with arguments sends message to concrete email`() {
+    fun `calling the function with arguments sends message to concrete email`() {
         val function = messageService::class.functions.find { it.name == "sendMessage" }
         assertNotNull(function) { "You must define a function with name sendMessage" }
         function.callBy(mapOf(
