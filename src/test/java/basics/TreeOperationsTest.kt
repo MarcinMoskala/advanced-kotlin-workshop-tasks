@@ -40,11 +40,11 @@ class TreeOperationsTest {
     /*
                 root Node
                 /     \
-              Node    DDD
+              Node     3
             /      \
-          Node     CCC
+          Node      4
          /    \
-       AAA    BBB
+        5      3
      */
     val treeInt = Node(Node(Node(Leaf(5), Leaf(3)), Leaf(4)), Leaf(3))
 
