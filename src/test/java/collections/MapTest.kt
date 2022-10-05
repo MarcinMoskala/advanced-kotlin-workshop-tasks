@@ -13,7 +13,7 @@ class MapTest {
         val numbers = 1..5
         val names = listOf("Mike", "Jane", "Marcin", "John", "James")
 
-        val upper = names.map { it.toUpperCase() }
+        val upper = names.map { it.uppercase() }
         val doubled = numbers.map { it * 2 }
 
         assertEquals(listOf("MIKE", "JANE", "MARCIN", "JOHN", "JAMES"), upper)
