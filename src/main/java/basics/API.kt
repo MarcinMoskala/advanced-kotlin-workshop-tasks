@@ -38,12 +38,12 @@ interface StudentRepository {
     fun getAllStudents(): List<StudentEntity>
 }
 
-object NotFoundException: Throwable()
+object NotFoundException : Throwable()
 
 interface AnalyticsRepository {
 
-    fun getStudentByIdCount(id: Long): Int
-    fun setStudentByIdCount(id: Long, count: Int)
+    fun getStudentCountById(id: Long): Int
+    fun setStudentCountById(id: Long, count: Int)
 }
 
 data class ApiError(val code: Int, override val message: String) : Throwable(message)

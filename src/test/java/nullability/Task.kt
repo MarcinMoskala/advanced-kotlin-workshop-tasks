@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 @Suppress("FunctionName")
-internal class BasicsTests {
+internal class NullabilityTaskTests {
 
     class MailCollector(): Mailer {
         data class Mail(val email: String, val message: String)

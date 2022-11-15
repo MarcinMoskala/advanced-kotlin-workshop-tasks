@@ -3,7 +3,7 @@ package nullability
 import junit.framework.Assert.*
 import org.junit.*
 
-class NullabilityThrowingTests {
+class NullabilityTaskThrowingTests {
 
     class MailCollector() : Mailer {
         data class Mail(val email: String, val message: String)

@@ -38,17 +38,17 @@ class APITest {
         val analyticsRepository = FakeAnalyticsRepository()
         val controller = StudentController(studentsRepo, analyticsRepository)
 
-        assertEquals(0, analyticsRepository.getStudentByIdCount(1))
+        assertEquals(0, analyticsRepository.getStudentCountById(1))
         controller.getStudent(1)
-        assertEquals(1, analyticsRepository.getStudentByIdCount(1))
+        assertEquals(1, analyticsRepository.getStudentCountById(1))
         controller.getStudent(1)
         controller.getStudent(1)
-        assertEquals(3, analyticsRepository.getStudentByIdCount(1))
+        assertEquals(3, analyticsRepository.getStudentCountById(1))
 
-        assertEquals(0, analyticsRepository.getStudentByIdCount(4))
+        assertEquals(0, analyticsRepository.getStudentCountById(4))
         controller.getStudent(4)
-        assertEquals(1, analyticsRepository.getStudentByIdCount(4))
-        assertEquals(3, analyticsRepository.getStudentByIdCount(1))
+        assertEquals(1, analyticsRepository.getStudentCountById(4))
+        assertEquals(3, analyticsRepository.getStudentCountById(1))
     }
 
     @Test
@@ -93,9 +93,9 @@ class APITest {
         // Maps id to count
         private val counter: MutableMap<Long, Int> = mutableMapOf(1L to 0, 2L to 3, 3L to 5, 4L to 0)
 
-        override fun getStudentByIdCount(id: Long): Int = counter[id] ?: throw Error("No user with such ID")
+        override fun getStudentCountById(id: Long): Int = counter[id] ?: throw Error("No user with such ID")
 
-        override fun setStudentByIdCount(id: Long, count: Int) {
+        override fun setStudentCountById(id: Long, count: Int) {
             counter[id] = count
         }
     }
