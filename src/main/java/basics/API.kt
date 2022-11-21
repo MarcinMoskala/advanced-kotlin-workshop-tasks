@@ -3,8 +3,8 @@ package basics
 import generics.Response
 
 class StudentController(
-    val studentRepository: StudentRepository,
-    val analyticsRepository: AnalyticsRepository
+    private val studentRepository: StudentRepository,
+    private val analyticsRepository: AnalyticsRepository
 ) {
 
     @GetMapping("/student/{id}")
@@ -42,8 +42,8 @@ object NotFoundException : Throwable()
 
 interface AnalyticsRepository {
 
-    fun getStudentCountById(id: Long): Int
-    fun setStudentCountById(id: Long, count: Int)
+    fun getStudentByIdCount(id: Long): Int
+    fun setStudentByIdCount(id: Long, count: Int)
 }
 
 data class ApiError(val code: Int, override val message: String) : Throwable(message)
