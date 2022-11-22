@@ -6,7 +6,7 @@ import kotlin.collections.map as stdlibMap
 import kotlin.collections.filter as stdlibFilter
 import kotlin.collections.onEach as stdlibOnEach
 
-inline fun <T> Iterable<T>.onEach(operation: (T) -> Unit): Iterable<T> {
+inline fun <T, C: Iterable<T>> C.onEach(operation: (T) -> Unit): C {
     for (elem in this) {
         operation(elem)
     }
