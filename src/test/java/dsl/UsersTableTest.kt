@@ -5,7 +5,52 @@ import org.junit.jupiter.api.Assertions.*
 
 class UsersTableTest {
     @Test
-    fun complete() {
+    fun `should work for empty list`() {
+        // when
+        val result = usersTable(listOf())
+
+        // then
+        val expected = TableBuilder().apply {
+            trs += TrBuilder().apply {
+                tds += TdBuilder().apply { text = "Id" }
+                tds += TdBuilder().apply { text = "Name" }
+                tds += TdBuilder().apply { text = "Points" }
+                tds += TdBuilder().apply { text = "Category" }
+            }
+        }
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should work for a list with a single element`() {
+        // given
+        val users = listOf(
+            User("1", "Randy", 2, "A"),
+        )
+
+        // when
+        val result = usersTable(users)
+
+        // then
+        val expected = TableBuilder().apply {
+            trs += TrBuilder().apply {
+                tds += TdBuilder().apply { text = "Id" }
+                tds += TdBuilder().apply { text = "Name" }
+                tds += TdBuilder().apply { text = "Points" }
+                tds += TdBuilder().apply { text = "Category" }
+            }
+            trs += TrBuilder().apply {
+                tds += TdBuilder().apply { text = "1" }
+                tds += TdBuilder().apply { text = "Randy" }
+                tds += TdBuilder().apply { text = "2" }
+                tds += TdBuilder().apply { text = "A" }
+            }
+        }
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should work for a list with multiple users`() {
         // given
         val users = listOf(
             User("1", "Randy", 2, "A"),
