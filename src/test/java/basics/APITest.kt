@@ -80,7 +80,7 @@ class APITest {
 
         override fun findStudentResult(id: Long): Response<StudentEntity, NotFoundException> {
             return students.firstOrNull { it.id == id }
-                ?.let { Success<StudentEntity, NotFoundException>(it) }
+                ?.let { Success(it) }
                 ?: Failure(NotFoundException)
         }
 
