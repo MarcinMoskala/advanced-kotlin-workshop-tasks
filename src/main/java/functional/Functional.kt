@@ -49,8 +49,15 @@ class LambdaFunctionalTypeInferred : FunctionsFunctional {
     override val longestOf = TODO()
 }
 
-class FunctionReferenceFunctionalTypeInferred : FunctionsFunctional {
-    override val add: (Int, Int) -> Int = ::add
+class FunctionReference : FunctionsFunctional {
+    override val add: (Int, Int) -> Int = Int::plus
+    override val printNum: (Int) -> Unit = TODO()
+    override val triple: (Int) -> Int = TODO()
+    override val longestOf: (String, String, String) -> String = TODO()
+}
+
+class FunctionMemberReference : FunctionsFunctional {
+    override val add: (Int, Int) -> Int = this::add
     override val printNum: (Int) -> Unit = TODO()
     override val triple: (Int) -> Int = TODO()
     override val longestOf: (String, String, String) -> String = TODO()
@@ -67,7 +74,7 @@ class FunctionReferenceFunctionalTypeInferred : FunctionsFunctional {
         .maxByOrNull { it.length }!!
 }
 
-class BoundedFunctionReferenceFunctionalTypeInferred : FunctionsFunctional {
+class BoundedFunctionReference : FunctionsFunctional {
     private val classic = FunctionsClassic()
 
     override val add: (Int, Int) -> Int = classic::add

@@ -1,4 +1,4 @@
-sealed class Consumer<T> {
+abstract class Consumer<T> {
     abstract fun consume(elem: T)
 }
 
@@ -14,32 +14,26 @@ class Printer<T> : Consumer<T>() {
     }
 }
 
-class Scanner<T> : Consumer<T>() {
-    private var toScan: T? = null
-
-    fun scan() {
-        println("Scanning $toScan")
-    }
-
+class Sender<T> : Consumer<T>() {
     override fun consume(elem: T) {
-        toScan = elem
+        // ...
     }
 }
 
 fun getConsumer(): Consumer<Number> = Printer()
 
+fun sendInt(sender: Sender<Int>) {}
+fun sendFloat(sender: Sender<Float>) {}
+
 fun main(args: Array<String>) {
     val consumer = getConsumer()
     consumer.consume(10)
 
-    when (consumer) {
-        is Printer -> consumer.print()
-        is Scanner -> consumer.scan()
-    }
-
-    // TODO: I want consumer to accept below declarations
+    val sender = Sender<Number>()
+//    sendInt(sender)
+//    sendFloat(sender)
 //    val c1: Consumer<Int> = Printer<Number>()
-//    val c2: Consumer<Int> = Scanner<Number>()
+//    val c2: Consumer<Int> = Sender<Number>()
 //    val c3: Printer<Int> = Printer<Number>()
-//    val c4: Scanner<Int> = Scanner<Number>()
+//    val c4: Sender<Int> = Sender<Number>()
 }

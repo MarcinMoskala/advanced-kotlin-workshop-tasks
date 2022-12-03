@@ -26,13 +26,18 @@ class FunctionalTest {
     }
 
     @Test
-    fun testFunctionReferenceFunctionalTypeInferred() {
-        testFunctions(FunctionReferenceFunctionalTypeInferred())
+    fun testFunctionReference() {
+        testFunctions(FunctionReference())
     }
 
     @Test
-    fun testBoundedFunctionReferenceFunctionalTypeInferred() {
-        testFunctions(BoundedFunctionReferenceFunctionalTypeInferred())
+    fun testFunctionMemberReference() {
+        testFunctions(FunctionMemberReference())
+    }
+
+    @Test
+    fun testBoundedFunctionReference() {
+        testFunctions(BoundedFunctionReference())
     }
 
     fun testFunctions(obj: FunctionsFunctional) {
