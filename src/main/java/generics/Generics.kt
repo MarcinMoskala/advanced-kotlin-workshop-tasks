@@ -1,9 +1,4 @@
-interface Wild
-interface Animal
-open class Dog : Wild, Animal
-class Human : Animal
-class Puppy : Dog()
-class Hund : Dog()
+package generics
 
 class Box<T>(e: T) {
     var e: T = e
